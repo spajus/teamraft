@@ -2,6 +2,9 @@ DatFace::Application.routes.draw do
   devise_for :people
 
   resource :company, controller: 'company' do
+  end
+
+  resources :people do
 
   end
 
