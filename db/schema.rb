@@ -11,16 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131116080525) do
+ActiveRecord::Schema.define(version: 20131116125055) do
 
   create_table "companies", force: true do |t|
-    t.string   "name",                        null: false
+    t.string   "name",                             null: false
     t.string   "logo"
     t.text     "about"
-    t.boolean  "allow_signup", default: true
-    t.boolean  "auto_approve", default: true
+    t.boolean  "allow_signup",      default: true
+    t.boolean  "auto_approve",      default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "registration_code"
   end
 
   create_table "people", force: true do |t|

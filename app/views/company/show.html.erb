@@ -1,2 +1,6 @@
-<h1>Company#show</h1>
-<p>Find me in app/views/company/show.html.erb</p>
+<h1><%= @company.name %></h1>
+<%= link_to 'Add a person', person_register_path %>
+<hr/>
+<%= render partial: 'people/person', collection: @company.people, spacer_template: 'people/separator' %>
+
+

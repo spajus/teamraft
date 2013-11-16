@@ -7,6 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if person_signed_in? %>
+  Welcome, <%= current_person.name %>
+  <%= link_to 'Logout', destroy_person_session_path, method: 'delete' %>
+<% else %>
+  <%= link_to 'Register your company', company_register_path %>
+  <%= link_to 'Login', new_person_session_path %>
+<% end %>
+<hr/>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 

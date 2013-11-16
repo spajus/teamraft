@@ -1,0 +1,9 @@
+Hi, <%= @person.name %>,
+
+<%= @added_by.name %> added you as a part of the company called <%= @company.name %>.
+To login to the site, just follow this link: <%= new_person_session_path(only_path: false) %>.
+
+Login using <%= @person.email %> and this password: <%= @password %>
+You should change your password immediately after login.
+
+Thanks and have a great day!</p>
