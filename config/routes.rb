@@ -1,8 +1,15 @@
 DatFace::Application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  devise_for :people
 
-  # You can have the root of your site routed with "root"
+  resource :company, controller: 'company' do
+
+  end
+
+  resource :register, controller: 'register', only: [] do
+    match :company, via: [:get, :post]
+    match :person, via: [:get, :post]
+  end
+
   root 'welcome#index'
 
   # Example of regular route:

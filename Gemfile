@@ -46,4 +46,8 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'devise'
+
+gem 'pry-nav', group: :development
+
 ruby "2.0.0"
