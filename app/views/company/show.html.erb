@@ -1,7 +1,4 @@
 <h1><%= @company.name %></h1>
-<% if current_person.admin? %>
-  <%= link_to 'Add a person', person_register_path %>
-<% end %>
 <hr/>
 <%= render partial: 'people/person', collection: @company.people, spacer_template: 'people/separator' %>
 

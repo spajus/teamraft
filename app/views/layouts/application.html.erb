@@ -4,9 +4,9 @@
   <body class="application">
     <div class="container">
       <%= render 'shared/nav' %>
-      <% if notice %><p class="notice"><%= notice %></p><% end %>
-      <% if alert %><p class="alert"><%= alert %></p><% end %>
+      <%= render 'shared/alerts' %>
       <%= yield %>
+      <%= render 'shared/footer' %>
     </div>
   </body>
 </html>

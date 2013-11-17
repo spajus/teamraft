@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="jumbotron">
+      <h1>Edit company</h1>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <%= form_tag company_path, role: 'form', method: 'put' do %>
+
+      <div class="form-group <%= error_class @company, :name %>">
+        <%= label_tag 'Company name' %>
+        <%= error_msg @company, :name %>
+        <%= text_field_tag 'company[name]', @company.name, class: 'form-control' %>
+      </div>
+
+      <%= button_tag 'Update', type: 'submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
