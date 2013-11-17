@@ -11,6 +11,7 @@ DatFace::Application.routes.draw do
   resource :register, controller: 'register', only: [] do
     match :company, via: [:get, :post]
     match :person, via: [:get, :post]
+    match ':company_name/:reg_code' => 'register#himself', via: [:get, :post], as: 'himself'
   end
 
   root 'welcome#index'

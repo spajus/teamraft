@@ -1,2 +1,4 @@
-<h1>Register yourself for <%= @company.name %></h1>
+<h1>Register a person working for <%= @company.name %></h1>
+<h3>Or allow them register theirselves using this link:</h3>
+<%= text_field_tag 'copy_me', himself_register_path(@company.name, @company.registration_code, only_path: false), readonly: true %>
 <%= render 'person_form', person: @person, company: @company %>

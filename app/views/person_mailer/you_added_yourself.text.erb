@@ -1,0 +1,10 @@
+Hi, <%= @person.name %>,
+
+You registered with company called <%= @company.name %>.
+<% if @person.joined_at %>
+To login to the site, just follow this link: <%= new_person_session_path(only_path: false) %>.
+<% else %>
+Please wait while your account is approved by company administrators.
+<% end %>
+
+Thanks and have a great day!</p>

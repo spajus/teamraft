@@ -1,5 +1,5 @@
 class PersonMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "no-reply@dat-face.herokuapp.com"
 
   def you_were_added(person, company, added_by, password)
     @person = person
@@ -7,5 +7,11 @@ class PersonMailer < ActionMailer::Base
     @added_by = added_by
     @password = password
     mail(to: @person.email, subject: "You were added to #{@company.name}")
+  end
+
+  def you_added_yourself(person, company)
+    @person = person
+    @company = company
+    mail(to: @person.email, subject: "You registered with #{@company.name}")
   end
 end

@@ -17,4 +17,8 @@ class Person < ActiveRecord::Base
     self.approver = person
     self.joined_at = DateTime.now
   end
+
+  def approved?
+    self.joined_at.present?
+  end
 end
