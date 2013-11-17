@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20131116125055) do
     t.boolean  "auto_approve",      default: true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "registration_code"
+    t.string   "registration_code",                null: false
   end
 
   create_table "people", force: true do |t|
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20131116125055) do
     t.string   "photo"
     t.boolean  "admin",                  default: false
     t.integer  "approver_id"
+    t.integer  "reports_to_id"
     t.datetime "joined_at"
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -41,9 +42,6 @@ ActiveRecord::Schema.define(version: 20131116125055) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "failed_attempts",        default: 0,     null: false
-    t.string   "unlock_token"
-    t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -51,7 +49,7 @@ ActiveRecord::Schema.define(version: 20131116125055) do
   add_index "people", ["approver_id"], name: "index_people_on_approver_id", using: :btree
   add_index "people", ["company_id"], name: "index_people_on_company_id", using: :btree
   add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
+  add_index "people", ["reports_to_id"], name: "index_people_on_reports_to_id", using: :btree
   add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true, using: :btree
-  add_index "people", ["unlock_token"], name: "index_people_on_unlock_token", unique: true, using: :btree
 
 end

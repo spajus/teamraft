@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <%= render 'shared/head' %>
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+        <%= render 'shared/nav' %>
+      </div>
+    </div>
+    <% if notice %><p class="notice"><%= notice %></p><% end %>
+    <% if alert %><p class="alert"><%= alert %></p><% end %>
+    <%= yield %>
+  </body>
+</html>

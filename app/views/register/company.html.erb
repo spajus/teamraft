@@ -1,17 +1,38 @@
-<h1>Signup#company</h1>
-<p>Find me in app/views/signup/company.html.erb</p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="jumbotron">
+      <h1>Register your company</h1>
+      <%= render "devise/shared/links", resource_name: :person, devise_mapping: Devise.mappings[:person] %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <%= form_tag nil, role: 'form' do %>
 
-<% if @company.errors.any? || @person.errors.any? %>
-  Sorry: <%= @company.errors.messages.entries.join %><%= @person.errors.messages.entries.join %>
-<% end %>
-<%= form_tag do %>
-  <%= label_tag 'Company Name' %>
-  <%= text_field_tag 'company[name]', @company.name %>
-  <%= label_tag 'Your Name' %>
-  <%= text_field_tag 'person[name]', @person.name %>
-  <%= label_tag 'Your Email' %>
-  <%= email_field_tag 'person[email]', @person.email %>
-  <%= label_tag 'Your Password' %>
-  <%= password_field_tag 'person[password]' %>
-  <%= submit_tag %>
-<% end %>
+      <div class="form-group <%= error_class @company, :name %>">
+        <%= label_tag 'Company name' %>
+        <%= error_msg @company, :name %>
+        <%= text_field_tag 'company[name]', @company.name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group <%= error_class @person, :name %>">
+        <%= label_tag 'Your full name' %>
+        <%= error_msg @person, :name %>
+        <%= text_field_tag 'person[name]', @person.name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group <%= error_class @person, :email %>">
+        <%= label_tag 'Your email' %>
+        <%= error_msg @person, :email %>
+        <%= email_field_tag 'person[email]', @person.email, class: 'form-control' %>
+      </div>
+
+      <div class="form-group <%= error_class @person, :password %>">
+        <%= label_tag 'Your password' %>
+        <%= error_msg @person, :password %>
+        <%= password_field_tag 'person[password]', nil, class: 'form-control' %>
+      </div>
+
+      <%= button_tag 'Register', type: 'submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

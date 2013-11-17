@@ -7,6 +7,7 @@ class DeviseCreatePeople < ActiveRecord::Migration
       t.string :photo
       t.boolean :admin, default: false
       t.integer :approver_id
+      t.integer :reports_to_id
       t.datetime :joined_at
 
       ## Database authenticatable
@@ -27,9 +28,6 @@ class DeviseCreatePeople < ActiveRecord::Migration
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
 
-
-
-
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
@@ -37,10 +35,9 @@ class DeviseCreatePeople < ActiveRecord::Migration
       # t.string   :unconfirmed_email # Only if using reconfirmable
 
       ## Lockable
-      t.integer  :failed_attempts, :default => 0, :null => false # Only if lock strategy is :failed_attempts
-      t.string   :unlock_token # Only if unlock strategy is :email or :both
-      t.datetime :locked_at
-
+      # t.integer  :failed_attempts, :default => 0, :null => false # Only if lock strategy is :failed_attempts
+      # t.string   :unlock_token # Only if unlock strategy is :email or :both
+      # t.datetime :locked_at
 
       t.timestamps
     end
@@ -48,9 +45,10 @@ class DeviseCreatePeople < ActiveRecord::Migration
     add_index :people, :email,                :unique => true
     add_index :people, :reset_password_token, :unique => true
     # add_index :people, :confirmation_token,   :unique => true
-    add_index :people, :unlock_token,         :unique => true
+    # add_index :people, :unlock_token,         :unique => true
 
     add_index :people, :company_id
     add_index :people, :approver_id
+    add_index :people, :reports_to_id
   end
 end

@@ -5,12 +5,11 @@ class Person < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :lockable
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :approver, class_name: 'Person'
   belongs_to :company
+  belongs_to :reports_to, class_name: 'Person'
 
   def approve_by(person)
     raise "#{person} (not admin) tried to approve #{self}" unless person.admin?

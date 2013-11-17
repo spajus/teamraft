@@ -1,4 +1,7 @@
 class RegisterController < ApplicationController
+
+  before_filter :authenticate_person!, only: :person
+
   def company
     @company = Company.new
     @person = Person.new
@@ -30,6 +33,8 @@ class RegisterController < ApplicationController
 
     @person = Person.new
     @company = Company.where(registration_code: params[:reg_code]).first
+
+    not_found unless @company
 
     return unless request.post?
 
