@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118042913) do
+ActiveRecord::Schema.define(version: 20131118051142) do
 
   create_table "attribute_types", force: true do |t|
     t.integer  "company_id",                     null: false
@@ -63,5 +63,14 @@ ActiveRecord::Schema.define(version: 20131118042913) do
   add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
   add_index "people", ["reports_to_id"], name: "index_people_on_reports_to_id", using: :btree
   add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true, using: :btree
+
+  create_table "person_attributes", force: true do |t|
+    t.integer  "attribute_type_id",                 null: false
+    t.integer  "person_id",                         null: false
+    t.string   "value",                             null: false
+    t.boolean  "deleted",           default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

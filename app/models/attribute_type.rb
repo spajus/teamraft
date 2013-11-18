@@ -1,6 +1,7 @@
 class AttributeType < ActiveRecord::Base
 
   belongs_to :company
+  has_many :person_attributes
 
   TYPES = %w[Date Checkbox Text Number Email Phone]
 

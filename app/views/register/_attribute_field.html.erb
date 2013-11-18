@@ -1,0 +1,4 @@
+<div class="form-group">
+  <%= label_tag attribute_field.attribute_name %>
+  <%= text_field_tag "person_attribute[attribute_field.id]", person.attribute_value(attribute_field), class: 'form-control' %>
+</div>
