@@ -9,7 +9,8 @@ class CompanyController < ApplicationController
   end
 
   def update
-    @company.update_attributes(params.require(:company).permit(:name))
+    params[:company].reverse_merge!(allow_signup: 0, auto_approve: 0)
+    @company.update_attributes(params.require(:company).permit(:name, :allow_signup, :auto_approve))
     flash[:notice] = 'Updated'
     redirect_to action: :edit
   end

@@ -1,4 +1,6 @@
 DatFace::Application.routes.draw do
+  resources :attribute_types
+
   devise_for :people
 
   resource :company, controller: 'company' do

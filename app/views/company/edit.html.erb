@@ -13,6 +13,22 @@
         <%= text_field_tag 'company[name]', @company.name, class: 'form-control' %>
       </div>
 
+      <div class="form-group <%= error_class @company, :name %>">
+        <%= label_tag 'Registration link' %>
+
+        <%= text_field_tag 'copy_me', himself_register_path(@company.name, @company.registration_code, only_path: false), readonly: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= check_box_tag 'company[allow_signup]', '1', @company.allow_signup? %>
+        <%= label_tag 'company[allow_signup]', 'Registration link is enabled' %>
+      </div>
+
+      <div class="form-group">
+        <%= check_box_tag 'company[auto_approve]', '1', @company.auto_approve? %>
+        <%= label_tag 'company[auto_approve]', 'Automatically approve people who sign up using registration link' %>
+      </div>
+
       <%= button_tag 'Update', type: 'submit', class: 'btn btn-primary' %>
     <% end %>
   </div>

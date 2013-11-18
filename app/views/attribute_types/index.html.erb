@@ -1,0 +1,39 @@
+<% if @attribute_types.empty? %>
+  No attribute types available for your company, create some!
+<% end %>
+
+<%= render @attribute_types %>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="jumbotron">
+      <h1>Add new attribute type</h1>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <%= form_for(@new_attribute_type, role: 'form') do |f| %>
+
+      <div class="form-group">
+        <%= f.label :attribute_name %>
+        <%= f.text_field :attribute_name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :attribute_type %>
+        <%= f.select :attribute_type, options_for_select(AttributeType::TYPES), {}, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_field :description, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.check_box :required %>
+        <%= f.label :required %>
+      </div>
+
+      <%= f.button 'Add new', type: 'submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
