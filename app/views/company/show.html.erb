@@ -1,5 +1,6 @@
 <h1><%= @company.name %></h1>
-<hr/>
-<%= render partial: 'people/person', collection: @company.people, spacer_template: 'people/separator' %>
+<div class="row">
+  <%= render @company.people %>
+</div>
 
 
