@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
+//= require bootstrap-tagsinput
+//= require typeahead.min
 //= require holder
 //= require turbolinks
 //= require_tree .

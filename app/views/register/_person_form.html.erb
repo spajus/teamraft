@@ -18,6 +18,10 @@
         <%= label_tag 'Email' %>
         <%= email_field_tag 'person[email]', person.email, class: 'form-control' %>
       </div>
+      <div class="form-group">
+        <%= label_tag 'Tags' %>
+        <%= render 'people/tags_input', person: person %>
+      </div>
       <% unless person_signed_in? %>
         <div class="form-group">
           <%= label_tag 'Password' %>

@@ -1,4 +1,5 @@
 DatFace::Application.routes.draw do
+
   resources :attribute_types
 
   devise_for :people
@@ -6,8 +7,9 @@ DatFace::Application.routes.draw do
   resource :company, controller: 'company' do
   end
 
-  resources :people do
+  get '/people/tags_list.js' => 'people#tags_list', as: :people_tags_list
 
+  resources :people do
   end
 
   resource :register, controller: 'register', only: [] do

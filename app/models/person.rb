@@ -1,5 +1,7 @@
 class Person < ActiveRecord::Base
 
+  acts_as_taggable
+
   validates :company, presence: true
   validates :name, presence: true
 

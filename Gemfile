@@ -47,6 +47,7 @@ gem 'unicorn'
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+gem 'acts-as-taggable-on'
 
 gem 'pry-nav', group: :development
 

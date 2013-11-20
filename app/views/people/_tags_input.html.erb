@@ -1,0 +1,14 @@
+<div>
+  <%= text_field_tag 'person[tags]', person.tags.all.join(', '), class: 'form-control' %>
+  <script>
+    var tags_in = $('#person_tags')
+    tags_in.tagsinput();
+
+    tags_in.tagsinput('input').typeahead({
+      prefetch: '<%= people_tags_list_path %>'
+    }).bind('typeahead:selected', $.proxy(function (obj, datum) {
+      tags_in.tagsinput('add', datum.value);
+        tags_in.tagsinput('input').typeahead('setQuery', '');
+    }, $('input')));
+  </script>
+</div>
