@@ -1,5 +1,5 @@
 <div>
-  <%= text_field_tag 'person[tags]', person.tags.all.join(', '), class: 'form-control' %>
+  <%= text_field_tag 'person[tag_list]', person.tag_list.join(','), id: 'person_tags', class: 'form-control' %>
   <script>
     var tags_in = $('#person_tags')
     tags_in.tagsinput();

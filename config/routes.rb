@@ -12,6 +12,8 @@ DatFace::Application.routes.draw do
   resources :people do
   end
 
+  get '/tag/:tag_name' => 'tags#show', as: :tag
+
   resource :register, controller: 'register', only: [] do
     match :company, via: [:get, :post]
     match :person, via: [:get, :post]

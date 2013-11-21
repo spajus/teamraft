@@ -1,16 +1,10 @@
-<div class="col-md-6">
-  <table class="table">
+<div class="col-md-4">
+  <table class="table person-card">
     <tr>
-      <td><%= image_tag photo_url(person, size: 128), class: 'img-person img-person-small img-circle' %></td>
+      <td class="small-person-pic"><%= image_tag photo_url(person, size: 64), class: 'img-person img-person-small img-circle' %></td>
       <td>
         <h3><%= link_to person.name, person %> <%= admin_tag(person) %></h3>
-        <table class="table table-striped">
-          <tr>
-            <td><%= icon('envelope-o', 'Email') %></td>
-            <td><%= person.email %></td>
-          </tr>
-          <%= render partial: 'people/person_attribute', collection: @company.attribute_types, locals: { person: person }%>
-        </table>
+        <%= render partial: 'people/person_tag', collection: person.tags %>
       </td>
     </tr>
   </table>

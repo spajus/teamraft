@@ -58,7 +58,7 @@ class RegisterController < ApplicationController
 
     return unless request.post?
 
-    @person = Person.new(params.require(:person).permit(:name, :email))
+    @person = Person.new(params.require(:person).permit(:name, :email, :tag_list))
     @person.company = @company
     @person.approve_by(current_person)
 

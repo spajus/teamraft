@@ -24,6 +24,10 @@ body.application {
   padding-top: 20px;
 }
 
+.bootstrap-tagsinput {
+  width: 100%;
+}
+
 .navbar {
   margin-bottom: 20px;
 }

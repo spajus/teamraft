@@ -33,7 +33,7 @@
       <% end %>
       <li class="dropdown">
       <% if person_signed_in? %>
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_person.name %> <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= image_tag photo_url(current_person, size: 32), class: 'img-person img-person-navbar img-circle' %> <%= current_person.name %> <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li> <%= link_to 'My Profile', root_path %> </li>
           <li class="divider"></li>
