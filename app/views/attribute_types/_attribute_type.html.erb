@@ -1,5 +1,8 @@
-<div class="row">
-  <div>
-    <%= attribute_type.inspect %>
-  </div>
-</div>
+<tr>
+  <td><%= icon('circle', attribute_type.attribute_name) %></td>
+  <td><%= attribute_type.attribute_name %></td>
+  <td><%= attribute_type.attribute_type %></td>
+  <td><%= attribute_type.description %></td>
+  <td><%= attribute_type.required? %></td>
+  <td>Actions</td>
+</tr>

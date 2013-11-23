@@ -36,3 +36,7 @@ body.application {
   color: #ddd;
 }
 
+.no-wrap {
+  white-space: nowrap;
+}
+

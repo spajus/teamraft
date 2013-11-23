@@ -2,7 +2,7 @@ require 'digest/md5'
 module ApplicationHelper
 
   def icon(name, title)
-    content_tag(:i, '', class: "fa fa-#{name}", title: title)
+    content_tag(:i, '', class: "fa fa-#{name || 'circle'}", title: title)
   end
 
   def photo_url(person, options = {})

@@ -2,7 +2,27 @@
   No attribute types available for your company, create some!
 <% end %>
 
-<%= render @attribute_types %>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><h1 class="panel-title">Person attribute types</h1></div>
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Icon</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Hint</th>
+          <th>Required?</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @attribute_types %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-md-6">

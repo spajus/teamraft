@@ -14,11 +14,13 @@
     <% end %>
   </div>
   <div class="navbar-collapse collapse">
-    <form class="navbar-form navbar-left" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-    </form>
+    <% if person_signed_in? %>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+      </form>
+    <% end %>
     <ul class="nav navbar-nav navbar-right">
       <% if current_person.try :admin? %>
         <li class="dropdown">

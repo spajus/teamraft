@@ -1,7 +1,5 @@
 class CompanyController < ApplicationController
 
-  before_filter :authenticate_person!
-
   def show
   end
 
