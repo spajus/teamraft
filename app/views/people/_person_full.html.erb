@@ -1,0 +1,19 @@
+<div class="person-card">
+  <div class="col-md-3 large-person-pic"><%= image_tag photo_url(person, size: 256), class: 'img-person img-person-large img-circle' %></div>
+  <div class="col-md-9 person-data">
+    <h1><%= person.name %></h1>
+    <table class="table table-striped">
+      <tr>
+        <td width="1%"><%= icon('tags', 'Tags') %></td>
+        <td width="1%">Tags</td>
+        <td style=""><%= render partial: 'people/person_tag', collection: person.tags %> </td>
+      </tr>
+      <tr>
+        <td><%= icon('envelope-o', 'Email') %></td>
+        <td>Email</td>
+        <td><%= person.email %></td>
+      </tr>
+      <%= render partial: 'people/person_attribute', collection: person.company.attribute_types, locals: { person: person }%>
+    </table>
+  </div>
+</div>

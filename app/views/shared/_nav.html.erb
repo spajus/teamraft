@@ -15,11 +15,11 @@
   </div>
   <div class="navbar-collapse collapse">
     <% if person_signed_in? %>
-      <form class="navbar-form navbar-left" role="search">
+      <%= search_form_for @search, search_key: :person_search, class: 'navbar-form navbar-left' do %>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" name="q" value="<%= params[:q] %>" class="form-control" placeholder="Search">
         </div>
-      </form>
+      <% end %>
     <% end %>
     <ul class="nav navbar-nav navbar-right">
       <% if current_person.try :admin? %>

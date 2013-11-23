@@ -1,0 +1,3 @@
+<div class="row">
+  <%= highlight(render('person_full', person: search_result).html_safe, search_query, sanitize: false) %>
+</div>

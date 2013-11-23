@@ -48,6 +48,7 @@ gem 'unicorn'
 
 gem 'devise'
 gem 'acts-as-taggable-on'
+gem 'ransack'
 
 gem 'pry-nav', group: :development
 

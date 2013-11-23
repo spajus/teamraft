@@ -1,5 +1,15 @@
 class PeopleController < ApplicationController
 
+  def index
+    if params[:q]
+      search = { name_or_tags_name_or_person_attributes_value_cont: params[:q] }
+      @people = Person.search(search).result(distinct: true)
+    else
+      @people = @company.people
+    end
+  end
+
+
   def show
     @person = Person.find(params[:id])
   end

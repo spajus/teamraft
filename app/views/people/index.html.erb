@@ -1,0 +1,7 @@
+<div class="row">
+  <% if params[:q] %>
+    <%= render partial: 'search_result', collection: @people, locals: { search_query: params[:q] } %>
+  <% else %>
+    <%= render @people %>
+  <% end %>
+</div>
