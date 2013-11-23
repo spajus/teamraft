@@ -1,37 +1,30 @@
-<% if person.errors.any? %>
-  Sorry: <%= person.errors.messages.entries.join %>
-<% end %>
-<div class="row">
-  <div class="col-md-6">
-    <%= form_tag do %>
-      <div class="form-group">
-        <%= label_tag 'Company Name' %>
-        <div>
-          <%= company.name %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= label_tag 'Name' %>
-        <%= text_field_tag 'person[name]', person.name, class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= label_tag 'Email' %>
-        <%= email_field_tag 'person[email]', person.email, class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= label_tag 'Tags' %>
-        <%= render 'people/tags_input', person: person %>
-      </div>
-      <% unless person_signed_in? %>
-        <div class="form-group">
-          <%= label_tag 'Password' %>
-          <%= password_field_tag 'person[password]', class: 'form-control' %>
-        </div>
-      <% end %>
-
-      <%= render partial: 'attribute_field', collection: company.attribute_types, locals: { person: person } %>
-
-      <%= button_tag 'Register', type: :submit, class: 'btn btn-primary' %>
-    <% end %>
+<%= form_tag do %>
+  <div class="form-group <%= error_class person, :name %>">
+    <%= label_tag 'Name' %>
+    <%= error_msg person, :name %>
+    <%= text_field_tag 'person[name]', person.name, class: 'form-control' %>
   </div>
-</div>
+  <div class="form-group <%= error_class person, :email %>">
+    <%= label_tag 'Email' %>
+    <%= error_msg person, :email %>
+    <%= email_field_tag 'person[email]', person.email, class: 'form-control' %>
+  </div>
+  <% if person_signed_in? %>
+    <div class="form-group">
+      <%= label_tag 'Tags' %>
+      <%= render 'people/tags_input', person: person %>
+    </div>
+  <% else %>
+    <div class="form-group <%= error_class person, :password %>">
+      <%= label_tag 'Password' %>
+      <%= error_msg person, :password %>
+      <%= password_field_tag 'person[password]', nil, class: 'form-control' %>
+    </div>
+  <% end %>
+
+  <hr />
+
+  <%= render partial: 'register/attribute_field', collection: company.attribute_types, locals: { person: person } %>
+
+  <%= button_tag (person.persisted? ? 'Update' : 'Register'), type: :submit, class: 'btn btn-primary' %>
+<% end %>

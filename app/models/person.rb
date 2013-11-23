@@ -26,6 +26,17 @@ class Person < ActiveRecord::Base
   end
 
   def attribute_value(attribute_type)
-    PersonAttribute.where(person: self, attribute_type: attribute_type).first.try :value
+    person_attributes.where(attribute_type: attribute_type,
+                            deleted: false).first.try :value
+  end
+
+  def to_param
+    [id, name.parameterize].join('-')
+  end
+
+  def update_person_attributes(attribute_list)
+    attribute_list.each do |type_id, value|
+      PersonAttribute.update(self, type_id, value)
+    end
   end
 end

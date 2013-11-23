@@ -1,0 +1,9 @@
+<table class="table person-card large-person-card">
+  <tr>
+    <td class="large-person-pic"><%= image_tag photo_url(@person, size: 256), class: 'img-person img-person-large img-circle' %></td>
+    <td class="person-data">
+      <h1><%= @person.name %></h1>
+      <%= render 'register/person_form', person: @person, company: @company %>
+    </td>
+  </tr>
+</table>

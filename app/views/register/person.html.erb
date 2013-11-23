@@ -1,8 +1,12 @@
-<h1>Register a person working for <%= @company.name %></h1>
-<h3>Or allow them register theirselves using this link:</h3>
 <div class="row">
-  <div class="col-md-12">
-    <%= text_field_tag 'copy_me', himself_register_path(@company.name, @company.registration_code, only_path: false), readonly: true, class: 'form-control' %>
+  <div class="col-md-6">
+    <div class="jumbotron">
+      <h1>Add someone to <%= @company.name %></h1>
+      <h3>Or give them this registration link:</h3>
+      <%= text_field_tag 'copy_me', himself_register_path(@company.name, @company.registration_code, only_path: false), readonly: true, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <%= render 'person_form', person: @person, company: @company %>
   </div>
 </div>
-<%= render 'person_form', person: @person, company: @company %>

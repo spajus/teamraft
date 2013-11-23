@@ -1,2 +1,10 @@
-<h1>Register yourself for <%= @company.name %></h1>
-<%= render 'person_form', person: @person, company: @company %>
+<div class="row">
+  <div class="col-md-6">
+    <div class="jumbotron">
+      <h1>Register to be a part of <%= @company.name %></h1>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <%= render 'person_form', person: @person, company: @company %>
+  </div>
+</div>

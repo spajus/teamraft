@@ -9,6 +9,8 @@ DatFace::Application.routes.draw do
 
   get '/people/tags_list.js' => 'people#tags_list', as: :people_tags_list
 
+
+  match '/me' => 'people#me', as: :me, via: [:get, :post]
   resources :people do
   end
 
