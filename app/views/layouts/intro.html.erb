@@ -6,8 +6,10 @@
       <div class="container">
         <%= render 'shared/nav' %>
         <%= render 'shared/alerts' %>
+        <div class="row">
+          <%= yield %>
+        </div>
       </div>
     </div>
-    <%= yield %>
   </body>
 </html>
