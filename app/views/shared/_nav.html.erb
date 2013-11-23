@@ -15,7 +15,7 @@
   </div>
   <div class="navbar-collapse collapse">
     <% if person_signed_in? %>
-      <%= search_form_for @search, search_key: :person_search, class: 'navbar-form navbar-left' do %>
+      <%= form_tag people_path, method: 'get', role: 'search', class: "navbar-form navbar-left" do %>
         <div class="form-group">
           <input type="text" name="q" value="<%= params[:q] %>" class="form-control" placeholder="Search">
         </div>

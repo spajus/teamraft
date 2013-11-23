@@ -1,7 +1,9 @@
-<div class="row">
-  <% if params[:q] %>
-    <%= render partial: 'search_result', collection: @people, locals: { search_query: params[:q] } %>
-  <% else %>
+<% if params[:q] %>
+  <%= render partial: 'search_result', collection: @people,
+      locals: { search_query: params[:q] },
+      spacer_template: 'search_spacer' %>
+<% else %>
+  <div class="row">
     <%= render @people %>
-  <% end %>
-</div>
+  </div>
+<% end %>
