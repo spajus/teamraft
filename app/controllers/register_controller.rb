@@ -46,7 +46,7 @@ class RegisterController < ApplicationController
         @person.joined_at = DateTime.now
       end
       @person.save
-      @person.update_person_attributes(params.require(:person_attributes))
+      @person.update_person_attributes(params[:person_attributes])
       sign_in(:person, @person)
       PersonMailer.you_added_yourself(@person, @company).deliver
       return redirect_to company_path
@@ -67,9 +67,8 @@ class RegisterController < ApplicationController
     @person.password = generated_password
 
     if @person.valid?
-      # TODO send email
       @person.save
-      @person.update_person_attributes(params.require(:person_attributes))
+      @person.update_person_attributes(params[:person_attributes])
       PersonMailer.you_were_added(@person, @company, current_person, generated_password).deliver
       return redirect_to company_path
     end

@@ -35,6 +35,7 @@ class Person < ActiveRecord::Base
   end
 
   def update_person_attributes(attribute_list)
+    return unless attribute_list
     attribute_list.each do |type_id, value|
       PersonAttribute.update(self, type_id, value)
     end
