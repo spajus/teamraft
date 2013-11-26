@@ -3,6 +3,8 @@ class AttributeTypesController < ApplicationController
   def index
     @attribute_types = @company.attribute_types
     @new_attribute_type = AttributeType.new
+
+    @templates = AttributeType.where(company_id: 0)
   end
 
   def create

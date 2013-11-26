@@ -1,0 +1,14 @@
+<tr>
+  <td><%= icon(attribute_template.icon, attribute_template.attribute_name) %></td>
+  <td><%= attribute_template.attribute_name %></td>
+  <td><%= link_to 'Add', "javascript:addTemplate#{attribute_template.id}()", class: 'btn btn-default pull-right' %></td>
+</tr>
+<script>
+  addTemplate<%= attribute_template.id %> = function() {
+    $('#new-icon').val('<%= j attribute_template.icon %>');
+    $('#new-name').val('<%= j attribute_template.attribute_name %>');
+    $('#new-type').val('<%= j attribute_template.attribute_type %>');
+    $('#new-hint').val('<%= j attribute_template.description %>');
+    return false;
+  };
+</script>

@@ -2,27 +2,44 @@
   No attribute types available for your company, create some!
 <% end %>
 
-
-<div class="panel panel-default">
-  <div class="panel-heading"><h1 class="panel-title">Person attribute types</h1></div>
-  <div class="panel-body">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Icon</th>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Hint</th>
-          <th>Required?</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render @attribute_types %>
-      </tbody>
-    </table>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h1 class="panel-title">Templates</h1></div>
+      <div class="panel-body">
+        <table class="table">
+          <tbody>
+            <%= render partial: 'attribute_template', collection: @templates %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h1 class="panel-title">Person attribute types</h1></div>
+      <div class="panel-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Icon</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Hint</th>
+              <th>Required?</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @attribute_types %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
+
+
 
 <div class="row">
   <div class="col-md-6">
@@ -32,20 +49,24 @@
   </div>
   <div class="col-md-6">
     <%= form_for(@new_attribute_type, role: 'form') do |f| %>
+      <div class="form-group">
+        <%= f.label :icon %>
+        <%= f.text_field :icon, class: 'form-control', id: 'new-icon' %>
+      </div>
 
       <div class="form-group">
         <%= f.label :attribute_name %>
-        <%= f.text_field :attribute_name, class: 'form-control' %>
+        <%= f.text_field :attribute_name, class: 'form-control', id: 'new-name' %>
       </div>
 
       <div class="form-group">
         <%= f.label :attribute_type %>
-        <%= f.select :attribute_type, options_for_select(AttributeType::TYPES), {}, class: 'form-control' %>
+        <%= f.select :attribute_type, options_for_select(AttributeType::TYPES), {}, class: 'form-control', id: 'new-type' %>
       </div>
 
       <div class="form-group">
         <%= f.label :description %>
-        <%= f.text_field :description, class: 'form-control' %>
+        <%= f.text_field :description, class: 'form-control', id: 'new-hint' %>
       </div>
 
       <div class="form-group">
