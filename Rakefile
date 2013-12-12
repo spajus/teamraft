@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-DatFace::Application.load_tasks
+Teamraft::Application.load_tasks

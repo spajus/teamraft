@@ -1,4 +1,4 @@
-DatFace::Application.routes.draw do
+Teamraft::Application.routes.draw do
 
   resources :attribute_types
 
