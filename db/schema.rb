@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131123094239) do
+ActiveRecord::Schema.define(version: 20131212055744) do
 
   create_table "attribute_types", force: true do |t|
     t.integer  "company_id",                     null: false
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20131123094239) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "ninja"
   end
 
   add_index "people", ["approver_id"], name: "index_people_on_approver_id", using: :btree
@@ -73,6 +74,19 @@ ActiveRecord::Schema.define(version: 20131123094239) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "rails_admin_histories", force: true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      limit: 2
+    t.integer  "year",       limit: 8
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

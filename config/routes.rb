@@ -1,5 +1,6 @@
 Teamraft::Application.routes.draw do
 
+  mount RailsAdmin::Engine => '/ninja', :as => 'rails_admin'
   resources :attribute_types
 
   devise_for :people
