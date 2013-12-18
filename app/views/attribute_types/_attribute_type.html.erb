@@ -4,5 +4,9 @@
   <td><%= attribute_type.attribute_type %></td>
   <td><%= attribute_type.description %></td>
   <td><%= attribute_type.required? %></td>
-  <td>Actions</td>
+  <td>
+    <%= link_to(attribute_type_path(attribute_type), method: 'delete') do %>
+      <%= icon('times', 'Delete') %>
+    <% end %>
+  </td>
 </tr>

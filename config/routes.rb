@@ -1,5 +1,8 @@
 Teamraft::Application.routes.draw do
 
+  get "privacy" => 'static#privacy', as: :privacy
+  get "terms" => 'static#terms', as: :terms
+
   mount RailsAdmin::Engine => '/ninja', :as => 'rails_admin'
   resources :attribute_types
 

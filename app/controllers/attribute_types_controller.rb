@@ -13,11 +13,17 @@ class AttributeTypesController < ApplicationController
                                                   .permit(:attribute_name,
                                                           :attribute_type,
                                                           :description,
+                                                          :icon,
                                                           :required))
     @new_attribute_type.company = @company
     @new_attribute_type.sort_order = AttributeType.next_sort_order_for(@company)
     @new_attribute_type.save
 
+    redirect_to attribute_types_path
+  end
+
+  def destroy
+    AttributeType.where(company: @company, id: params[:id]).destroy_all
     redirect_to attribute_types_path
   end
 

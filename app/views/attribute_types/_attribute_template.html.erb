@@ -9,6 +9,7 @@
     $('#new-name').val('<%= j attribute_template.attribute_name %>');
     $('#new-type').val('<%= j attribute_template.attribute_type %>');
     $('#new-hint').val('<%= j attribute_template.description %>');
+    $('#new-required').prop('checked', <%= attribute_template.required? %>);
     return false;
   };
 </script>
