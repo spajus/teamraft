@@ -5,6 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+spajus = Person.where(email: 'tomas.varaneckas@gmail.com').first
+spajus.update_attribute(:ninja, true) if spajus
+
 def add_attribute_type(params)
   attr = AttributeType.where(company_id: 0,
                              attribute_name: params[:attribute_name]).first_or_initialize
