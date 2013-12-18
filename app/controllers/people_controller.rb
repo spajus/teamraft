@@ -3,7 +3,7 @@ class PeopleController < ApplicationController
   def index
     if params[:q]
       search = { name_or_tags_name_or_person_attributes_value_cont: params[:q] }
-      @people = Person.search(search).result(distinct: true)
+      @people = Person.where(company: @company).search(search).result(distinct: true)
     else
       @people = @company.people
     end
