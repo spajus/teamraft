@@ -21,7 +21,9 @@ class PeopleController < ApplicationController
   def update
     @person.update_attributes(params.require(:person).permit(:name, :email, :tag_list))
     @person.update_person_attributes(params[:person_attributes])
-    flash.now[:notice] = 'Updated'
+    if @person.valid?
+      flash.now[:notice] = 'Updated'
+    end
   end
 
   def me

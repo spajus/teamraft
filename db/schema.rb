@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212055744) do
+ActiveRecord::Schema.define(version: 20131221074531) do
 
   create_table "attribute_types", force: true do |t|
     t.integer  "company_id",                     null: false
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20131212055744) do
   create_table "person_attributes", force: true do |t|
     t.integer  "attribute_type_id",                 null: false
     t.integer  "person_id",                         null: false
-    t.string   "value",                             null: false
+    t.string   "value"
     t.boolean  "deleted",           default: false
     t.datetime "created_at"
     t.datetime "updated_at"

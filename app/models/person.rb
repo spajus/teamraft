@@ -4,6 +4,7 @@ class Person < ActiveRecord::Base
 
   validates :company, presence: true
   validates :name, presence: true
+  validates_associated :person_attributes
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -26,8 +27,16 @@ class Person < ActiveRecord::Base
   end
 
   def attribute_value(attribute_type)
+    attribute_instance(attribute_type).try :value
+  end
+
+  def attribute_instance(attribute_type)
     person_attributes.where(attribute_type: attribute_type,
-                            deleted: false).first.try :value
+                            deleted: false).first
+  end
+
+  def attribute_cached_instance(attribute_type)
+    person_attributes.select { |a| a.attribute_type == attribute_type }.first
   end
 
   def to_param

@@ -40,13 +40,12 @@ class RegisterController < ApplicationController
 
     @person = Person.new(params.require(:person).permit(:name, :email, :password))
     @person.company = @company
-
+    if @company.auto_approve?
+      @person.joined_at = DateTime.now
+    end
+    @person.update_person_attributes(params[:person_attributes])
     if @person.valid?
-      if @company.auto_approve?
-        @person.joined_at = DateTime.now
-      end
       @person.save
-      @person.update_person_attributes(params[:person_attributes])
       sign_in(:person, @person)
       PersonMailer.you_added_yourself(@person, @company).deliver
       return redirect_to company_path
@@ -65,10 +64,9 @@ class RegisterController < ApplicationController
 
     generated_password = Devise.friendly_token.first(8)
     @person.password = generated_password
-
+    @person.update_person_attributes(params[:person_attributes])
     if @person.valid?
       @person.save
-      @person.update_person_attributes(params[:person_attributes])
       PersonMailer.you_were_added(@person, @company, current_person, generated_password).deliver
       return redirect_to company_path
     end
