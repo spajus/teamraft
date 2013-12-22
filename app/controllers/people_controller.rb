@@ -9,6 +9,25 @@ class PeopleController < ApplicationController
     end
   end
 
+  def bulk_edit
+    index
+  end
+
+  def bulk_update
+    bulk_edit
+    # Errors appear on list when we use same object
+    person = @people.select { |p| p.id == params[:person_id].to_i }.first
+    @bulk_update_person_id = person.id
+    person.update_attributes(params.require(:person).permit(:name, :email, :tag_list))
+    person.update_person_attributes(params[:person_attributes])
+    if person.valid?
+      person.save
+      flash.now[:notice] = 'Updated'
+    else
+      flash.now[:alert] = "Could not update"
+    end
+    render :bulk_edit
+  end
 
   def show
     @person = Person.find(params[:id])
@@ -22,6 +41,7 @@ class PeopleController < ApplicationController
     @person.update_attributes(params.require(:person).permit(:name, :email, :tag_list))
     @person.update_person_attributes(params[:person_attributes])
     if @person.valid?
+      @person.save
       flash.now[:notice] = 'Updated'
     end
   end

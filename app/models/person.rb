@@ -14,7 +14,7 @@ class Person < ActiveRecord::Base
   belongs_to :company
   belongs_to :reports_to, class_name: 'Person'
 
-  has_many :person_attributes
+  has_many :person_attributes, dependent: :destroy, autosave: true
 
   def approve_by(person)
     raise "#{person} (not admin) tried to approve #{self}" unless person.admin?

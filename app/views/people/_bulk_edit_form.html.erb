@@ -1,0 +1,13 @@
+<a name="p_<%= person.id %>">
+<div class="col-md-12">
+  <table class="table person-card">
+    <tr>
+      <td class="small-person-pic"><%= image_tag photo_url(person, size: 64), class: 'img-person img-person-small img-circle' %></td>
+      <td>
+        <h3><%= link_to person.name, person %> <%= admin_tag(person) %></h3>
+        <%= render 'shared/alerts' if @bulk_update_person_id == person.id %>
+        <%= render 'register/person_form', person: person, company: @company %>
+      </td>
+    </tr>
+  </table>
+</div>

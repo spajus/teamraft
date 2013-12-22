@@ -1,7 +1,7 @@
 <div>
-  <%= text_field_tag 'person[tag_list]', person.tag_list.join(','), id: 'person_tags', class: 'form-control' %>
+  <%= text_field_tag 'person[tag_list]', person.tag_list.join(','), id: "person_tags_#{person.id}", class: 'form-control' %>
   <script>
-    var tags_in = $('#person_tags')
+    var tags_in = $('#person_tags_<%= person.id %>')
     tags_in.tagsinput();
 
     tags_in.tagsinput('input').typeahead({

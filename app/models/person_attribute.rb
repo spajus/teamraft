@@ -4,8 +4,10 @@ class PersonAttribute < ActiveRecord::Base
   validates :value, presence: true, if: 'attribute_type.required?'
 
   def self.update(person, attr_type_id, value)
-    attrib = person.person_attributes.where(attribute_type_id: attr_type_id).first_or_initialize
-    existing = person.person_attributes.select { |a| a.attribute_type_id == attr_type_id }.first
+    type_attributes = person.person_attributes.where(attribute_type_id: attr_type_id)
+    attrib = type_attributes.first_or_initialize
+    remove_duplicates(type_attributes, attrib)
+    existing = person.person_attributes.select { |a| a.attribute_type_id == attr_type_id.to_i }.first
     if existing
       attrib = existing
     else
@@ -14,5 +16,11 @@ class PersonAttribute < ActiveRecord::Base
     attrib.value = value
     attrib.deleted = false
     attrib
+  end
+
+  def self.remove_duplicates(attributes, attribute)
+    if attributes.length > 1 && attribute.id
+      attributes.map { |a| a.destroy if a.id != attribute.id }
+    end
   end
 end

@@ -4,7 +4,7 @@
   <body class="application">
     <div class="container">
       <%= render 'shared/nav' %>
-      <%= render 'shared/alerts' %>
+      <%= render 'shared/alerts' unless @bulk_update_person_id %>
       <%= yield %>
       <%= render 'shared/footer' %>
     </div>

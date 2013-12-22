@@ -1,4 +1,5 @@
 <%= form_tag do %>
+  <%= hidden_field_tag :person_id, person.id %>
   <div class="form-group <%= error_class person, :name %>">
     <%= label_tag 'Name' %>
     <%= error_msg person, :name %>

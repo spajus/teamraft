@@ -3,6 +3,6 @@
   <%= label_tag attribute_field.attribute_name %> <%= '*' if attribute_field.required? %>
   <%= error_msg attr, :value %>
   <%= text_field_tag "person_attributes[#{attribute_field.id}]",
-      attr.try(:value) || params[:person_attributes] && params[:person_attributes][attribute_field.id.to_s],
+      person_attribute_form_value(attribute_field, attr, person, @bulk_update_person_id),
       class: 'form-control' %>
 </div>
