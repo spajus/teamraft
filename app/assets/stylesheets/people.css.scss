@@ -11,6 +11,7 @@
   &.large-person-card {
     .large-person-pic {
       border-top: 0px;
+      width: 284px;
     }
     .person-data {
       border-top: 0px;
@@ -21,8 +22,8 @@
     max-width: 256px;
   }
   .img-person-small {
-    width: 64px;
-    height: 64px;
+    max-width: 64px;
+    max-height: 64px;
   }
   .small-person-pic {
     width: 64px;
@@ -35,4 +36,7 @@
   h3 {
     margin-top: 0;
   }
+}
+.text-center {
+  text-align: center;
 }

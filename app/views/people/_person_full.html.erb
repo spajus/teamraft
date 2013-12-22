@@ -1,9 +1,9 @@
 <div class="person-card">
-  <div class="col-md-3 large-person-pic"><%= image_tag photo_url(person, size: 256), class: 'img-person img-person-large img-circle' %></div>
+  <div class="col-md-3 large-person-pic"><%= image_tag photo_url(person, size: 256), width: 256, class: 'img-person img-person-large img-circle' %></div>
   <div class="col-md-9 person-data">
     <% if current_person.admin? %>
       <div class="pull-right">
-        <%= link_to 'Edit', "#{people_bulk_edit_path}#p_#{person.id}", class: 'btn btn-primary' %>
+        <%= link_to 'Edit', edit_person_path(person), class: 'btn btn-primary' %>
         <%= link_to 'Delete', person, confirm: 'Are you sure?', method: 'delete', class: 'btn btn-primary' %>
       </div>
     <% end %>

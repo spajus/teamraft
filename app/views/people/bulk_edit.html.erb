@@ -4,3 +4,6 @@
     <script>window.location.hash = 'p_<%= @bulk_update_person_id %>';</script>
   <% end %>
 </div>
+<div class="row text-center">
+  <%= paginate @people, params: page_params, theme: 'twitter-bootstrap-3' %>
+</div>

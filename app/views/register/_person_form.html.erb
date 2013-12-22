@@ -1,4 +1,6 @@
-<%= form_tag do %>
+<% page = params[:page] ? "?page=#{params[:page]}" : '' %>
+<%= form_tag "#{@form_path}#{page}", method: @form_method || :post do %>
+  <%= hidden_field_tag(:page, params[:page]) if params[:page] %>
   <%= hidden_field_tag :person_id, person.id %>
   <div class="form-group <%= error_class person, :name %>">
     <%= label_tag 'Name' %>
@@ -9,6 +11,11 @@
     <%= label_tag 'Email' %>
     <%= error_msg person, :email %>
     <%= email_field_tag 'person[email]', person.email, class: 'form-control' %>
+  </div>
+  <div class="form-group <%= error_class person, :photo %>">
+    <%= label_tag 'Photo (url)' %>
+    <%= error_msg person, :photo %>
+    <%= url_field_tag 'person[photo]', person.photo, placeholder: 'Will use Gravatar if photo url is empty. Square photo works best.', class: 'form-control' %>
   </div>
   <% if person_signed_in? %>
     <div class="form-group">

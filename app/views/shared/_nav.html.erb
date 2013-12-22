@@ -17,7 +17,7 @@
     <% if person_signed_in? %>
       <%= form_tag people_path, method: 'get', role: 'search', class: "navbar-form navbar-left" do %>
         <div class="form-group">
-          <input type="text" name="q" value="<%= params[:q] %>" class="form-control" placeholder="Search">
+          <input type="text" name="q" value="<%= params[:q] %>" pattern=".{3,}" title="Search for anything providing at least 3 characters" class="form-control" placeholder="Search">
         </div>
       <% end %>
     <% end %>

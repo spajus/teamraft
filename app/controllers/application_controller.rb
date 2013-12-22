@@ -10,6 +10,12 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new('Not Found')
   end
 
+  protected
+
+  def find_person
+    Person.where(id: params[:id], company: @company).first
+  end
+
   private
 
   def verify_admin
@@ -19,4 +25,5 @@ class ApplicationController < ActionController::Base
   def set_company
     @company = current_person.try :company
   end
+
 end

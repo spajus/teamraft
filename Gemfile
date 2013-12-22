@@ -50,6 +50,8 @@ gem 'devise'
 gem 'acts-as-taggable-on'
 gem 'ransack'
 gem 'rails_admin'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 gem 'pry-nav', group: :development
 

@@ -25,4 +25,12 @@ module ApplicationHelper
       content_tag(:span, errors.join(', '), class: 'help-block') if errors.any?
     end
   end
+
+  def page_params
+    page_p = HashWithIndifferentAccess.new(Hash[params.dup.map { |k, v| [k, nil] }])
+    page_p.delete(:page)
+    page_p.delete(:controller)
+    page_p.delete(:action)
+    page_p
+  end
 end

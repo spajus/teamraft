@@ -3,16 +3,18 @@ class PeopleController < ApplicationController
   before_filter :verify_admin, only: [:bulk_edit, :bulk_update, :destroy]
 
   def index
+    params.delete(:q) if params[:q] && params[:q].length < 3
     if params[:q]
       search = { name_or_tags_name_or_person_attributes_value_cont: params[:q] }
       @people = Person.where(company: @company).search(search).result(distinct: true)
     else
-      @people = @company.people.includes(:person_attributes, :tags).all
+      @people = @company.people
     end
   end
 
   def bulk_edit
     index
+    @people = @people.page(params[:page]).per(10)
   end
 
   def bulk_update
@@ -36,11 +38,14 @@ class PeopleController < ApplicationController
   end
 
   def edit
-    @person = Person.where(id: params[:id], company: @company).first
+    @person = find_person
+    @form_path = person_path(@person)
+    @form_method = :put
+    render :me
   end
 
   def destroy
-    person = Person.where(id: params[:id], company: @company).first
+    person = find_person
     if person
       person.destroy
       flash[:notice] = "#{person.name} removed from #{@company.name}"
@@ -49,12 +54,14 @@ class PeopleController < ApplicationController
   end
 
   def update
-    @person.update_attributes(params.require(:person).permit(:name, :email, :tag_list))
+    @person ||= find_person
+    @person.update_attributes(params.require(:person).permit(:name, :email, :photo, :tag_list))
     @person.update_person_attributes(params[:person_attributes])
     if @person.valid?
       @person.save
       flash.now[:notice] = 'Updated'
     end
+    render :show if params[:action] == 'update'
   end
 
   def me
