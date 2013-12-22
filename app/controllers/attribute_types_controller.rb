@@ -1,5 +1,7 @@
 class AttributeTypesController < ApplicationController
 
+  before_filter :verify_admin
+
   def index
     @attribute_types = @company.attribute_types
     @new_attribute_type = AttributeType.new

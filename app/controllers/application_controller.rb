@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def verify_admin
+    return redirect_to company_path unless current_person.admin?
+  end
+
   def set_company
     @company = current_person.try :company
   end

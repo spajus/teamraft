@@ -1,5 +1,7 @@
 class CompanyController < ApplicationController
 
+  before_filter :verify_admin, only: [:edit, :update]
+
   def show
   end
 

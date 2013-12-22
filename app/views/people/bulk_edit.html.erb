@@ -1,4 +1,6 @@
 <div class="row">
   <%= render partial: 'bulk_edit_form', collection: @people, as: :person %>
-  <script>window.location.hash = 'p_<%= @bulk_update_person_id %>';</script>
+  <% if @bulk_update_person_id %>
+    <script>window.location.hash = 'p_<%= @bulk_update_person_id %>';</script>
+  <% end %>
 </div>

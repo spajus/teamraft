@@ -1,5 +1,7 @@
 class PeopleController < ApplicationController
 
+  before_filter :verify_admin, only: [:bulk_edit, :bulk_update]
+
   def index
     if params[:q]
       search = { name_or_tags_name_or_person_attributes_value_cont: params[:q] }
