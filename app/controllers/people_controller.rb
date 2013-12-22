@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
 
-  before_filter :verify_admin, only: [:bulk_edit, :bulk_update]
+  before_filter :verify_admin, only: [:bulk_edit, :bulk_update, :destroy]
 
   def index
     if params[:q]
@@ -37,6 +37,15 @@ class PeopleController < ApplicationController
 
   def edit
     @person = Person.where(id: params[:id], company: @company).first
+  end
+
+  def destroy
+    person = Person.where(id: params[:id], company: @company).first
+    if person
+      person.destroy
+      flash[:notice] = "#{person.name} removed from #{@company.name}"
+    end
+    redirect_to company_path
   end
 
   def update

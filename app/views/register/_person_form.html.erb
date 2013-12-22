@@ -22,9 +22,6 @@
       <%= password_field_tag 'person[password]', nil, class: 'form-control' %>
     </div>
   <% end %>
-
-  <hr />
-
   <%= render partial: 'register/attribute_field', collection: company.attribute_types, locals: { person: person } %>
 
   <%= button_tag (person.persisted? ? 'Update' : 'Register'), type: :submit, class: 'btn btn-primary' %>
