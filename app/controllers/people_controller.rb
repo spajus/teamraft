@@ -63,6 +63,6 @@ class PeopleController < ApplicationController
   end
 
   def tags_list
-    render json: Person.tag_counts_on(:tags).map(&:name)
+    render json: Person.where(company: @company).tag_counts_on(:tags).map(&:name)
   end
 end
