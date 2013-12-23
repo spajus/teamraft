@@ -4,7 +4,10 @@ Teamraft::Application.routes.draw do
   get "terms" => 'static#terms', as: :terms
 
   mount RailsAdmin::Engine => '/ninja', :as => 'rails_admin'
-  resources :attribute_types
+  resources :attribute_types do
+    put :up
+    put :down
+  end
 
   devise_for :people
 

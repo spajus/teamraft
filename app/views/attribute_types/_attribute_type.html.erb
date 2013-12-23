@@ -8,5 +8,11 @@
     <%= link_to(attribute_type_path(attribute_type), method: 'delete') do %>
       <%= icon('times', 'Delete') %>
     <% end %>
+    <%= link_to(attribute_type_up_path(attribute_type), method: 'put') do %>
+      <%= icon('arrow-up', 'Move up') %>
+    <% end %>
+    <%= link_to(attribute_type_down_path(attribute_type), method: 'put') do %>
+      <%= icon('arrow-down', 'Move down') %>
+    <% end %>
   </td>
 </tr>

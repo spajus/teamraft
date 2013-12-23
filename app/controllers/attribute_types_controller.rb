@@ -9,6 +9,16 @@ class AttributeTypesController < ApplicationController
     @templates = AttributeType.where(company_id: 0)
   end
 
+  def up
+    AttributeType.change_sort_order(:up, params[:attribute_type_id], @company)
+    redirect_to attribute_types_path
+  end
+
+  def down
+    AttributeType.change_sort_order(:down, params[:attribute_type_id], @company)
+    redirect_to attribute_types_path
+  end
+
   def create
     params[:attribute_type].reverse_merge!(required: 0)
     @new_attribute_type = AttributeType.new(params.require(:attribute_type)
@@ -18,7 +28,6 @@ class AttributeTypesController < ApplicationController
                                                           :icon,
                                                           :required))
     @new_attribute_type.company = @company
-    @new_attribute_type.sort_order = AttributeType.next_sort_order_for(@company)
     @new_attribute_type.save
 
     redirect_to attribute_types_path

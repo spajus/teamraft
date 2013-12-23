@@ -24,10 +24,13 @@
         <%= label_tag 'company[allow_signup]', 'Registration link is enabled' %>
       </div>
 
+      <% if false %>
+      <%# Removed from features %>
       <div class="form-group">
         <%= check_box_tag 'company[auto_approve]', '1', @company.auto_approve? %>
         <%= label_tag 'company[auto_approve]', 'Automatically approve people who sign up using registration link' %>
       </div>
+      <% end %>
 
       <%= button_tag 'Update', type: 'submit', class: 'btn btn-primary' %>
     <% end %>
