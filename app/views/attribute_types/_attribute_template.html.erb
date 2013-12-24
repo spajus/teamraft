@@ -5,7 +5,7 @@
 </tr>
 <script>
   fillTemplate<%= attribute_template.id %> = function() {
-    $('#new-icon').val('<%= j attribute_template.icon %>');
+    $('#new-icon').val('<%= j attribute_template.icon %>').change();
     $('#new-name').val('<%= j attribute_template.attribute_name %>');
     $('#new-type').val('<%= j attribute_template.attribute_type %>');
     $('#new-hint').val('<%= j attribute_template.description %>');

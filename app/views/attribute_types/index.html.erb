@@ -49,13 +49,29 @@
   </div>
   <div class="col-md-8">
     <%= form_for(@new_attribute_type, role: 'form') do |f| %>
-      <div class="form-group">
+
+      <div class="form-group <%= error_class @new_attribute_type, :icon %>">
         <%= f.label :icon %>
-        <%= f.text_field :icon, class: 'form-control', id: 'new-icon' %>
+        <%= error_msg @new_attribute_type, :icon %>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <div class="icon-preview"><i class="fa fa-circle"></i></div>
+          </span>
+          <%= f.text_field :icon, class: 'form-control', id: 'new-icon' %>
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Choose Icon <span class="caret"></span></button>
+            <ul class="dropdown-menu pull-right">
+              <% FontAwesome::ICON_OPTIONS.each do |title, icon| %>
+                <li><a href="#" class="set-new-icon" data-icon="<%= icon %>"><%= icon(icon, title) %> <%= title %></a></li>
+              <% end %>
+            </ul>
+          </div><!-- /btn-group -->
+        </div><!-- /input-group -->
       </div>
 
-      <div class="form-group">
+      <div class="form-group <%= error_class @new_attribute_type, :attribute_name %>">
         <%= f.label :attribute_name %>
+        <%= error_msg @new_attribute_type, :attribute_name %>
         <%= f.text_field :attribute_name, class: 'form-control', id: 'new-name' %>
       </div>
 
@@ -64,8 +80,9 @@
         <%= f.select :attribute_type, options_for_select(AttributeType::TYPES), {}, class: 'form-control', id: 'new-type' %>
       </div>
 
-      <div class="form-group">
+      <div class="form-group <%= error_class @new_attribute_type, :attribute_name %>">
         <%= f.label :description %>
+        <%= error_msg @new_attribute_type, :description %>
         <%= f.text_field :description, class: 'form-control', id: 'new-hint' %>
       </div>
 

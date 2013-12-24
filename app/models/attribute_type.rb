@@ -1,5 +1,9 @@
 class AttributeType < ActiveRecord::Base
 
+  validates :icon, presence: true
+  validates :attribute_name, presence: true
+  validates :description, presence: true
+
   default_scope order 'sort_order asc'
 
   before_save :set_sort_order

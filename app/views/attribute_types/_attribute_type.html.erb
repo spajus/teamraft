@@ -5,13 +5,14 @@
   <td><%= attribute_type.description %></td>
   <td><%= attribute_type.required? %></td>
   <td>
-    <%= link_to(attribute_type_path(attribute_type), method: 'delete') do %>
+    <%= link_to(attribute_type_path(attribute_type), method: 'delete',
+        confirm: 'Are you sure? All data will be deleted too.', class: 'btn btn-danger') do %>
       <%= icon('times', 'Delete') %>
     <% end %>
-    <%= link_to(attribute_type_up_path(attribute_type), method: 'put') do %>
+    <%= link_to(attribute_type_up_path(attribute_type), method: 'put', class: 'btn btn-default') do %>
       <%= icon('arrow-up', 'Move up') %>
     <% end %>
-    <%= link_to(attribute_type_down_path(attribute_type), method: 'put') do %>
+    <%= link_to(attribute_type_down_path(attribute_type), method: 'put', class: 'btn btn-default') do %>
       <%= icon('arrow-down', 'Move down') %>
     <% end %>
   </td>

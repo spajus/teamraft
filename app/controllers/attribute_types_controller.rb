@@ -1,3 +1,4 @@
+require Rails.root.join 'lib/utils/font_awesome'
 class AttributeTypesController < ApplicationController
 
   before_filter :verify_admin
@@ -28,9 +29,16 @@ class AttributeTypesController < ApplicationController
                                                           :icon,
                                                           :required))
     @new_attribute_type.company = @company
-    @new_attribute_type.save
+    if @new_attribute_type.valid?
+      @new_attribute_type.save
 
-    redirect_to attribute_types_path
+      redirect_to attribute_types_path
+    else
+      @attribute_types = @company.attribute_types
+      @templates = AttributeType.where(company_id: 0)
+      flash[:alert] = 'Could not save'
+      render :index
+    end
   end
 
   def destroy
