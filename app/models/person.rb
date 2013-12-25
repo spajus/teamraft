@@ -1,5 +1,7 @@
 class Person < ActiveRecord::Base
 
+  scope :ordered, order('name asc')
+
   acts_as_taggable
 
   validates :company, presence: true

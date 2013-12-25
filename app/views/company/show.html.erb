@@ -1,5 +1,6 @@
 <div class="row">
-  <%= render @company.people %>
+  <%# FIXME: cannot use ordered scope - kills association %>
+  <%= render @company.people.order('name asc') %>
 </div>
 
 

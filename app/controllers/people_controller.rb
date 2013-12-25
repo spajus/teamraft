@@ -6,9 +6,9 @@ class PeopleController < ApplicationController
     params.delete(:q) if params[:q] && params[:q].length < 3
     if params[:q]
       search = { name_or_tags_name_or_person_attributes_value_cont: params[:q] }
-      @people = Person.where(company: @company).search(search).result(distinct: true)
+      @people = Person.ordered.where(company: @company).search(search).result(distinct: true)
     else
-      @people = @company.people
+      @people = @company.people.order('name asc')
     end
   end
 
@@ -55,6 +55,9 @@ class PeopleController < ApplicationController
 
   def update
     @person ||= find_person
+    unless (@person == current_person) || current_person.admin?
+      return redirect_to company_path
+    end
     @person.update_attributes(params.require(:person).permit(:name, :email, :photo, :tag_list))
     @person.update_person_attributes(params[:person_attributes])
     if @person.valid?
