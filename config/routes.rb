@@ -1,5 +1,8 @@
 Teamraft::Application.routes.draw do
 
+  get "feedback/index", as: :feedback
+  post "feedback/index"
+
   get "privacy" => 'static#privacy', as: :privacy
   get "terms" => 'static#terms', as: :terms
 

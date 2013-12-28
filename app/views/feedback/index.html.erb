@@ -1,0 +1,21 @@
+<h1>Hi, we want to hear from you</h1>
+<%= form_tag do %>
+  <%= hidden_field_tag 'feedback[:person_id]', current_person.try(:id) %>
+  <div class="form-group <%= error_class @feedback, :email %>">
+    <%= label_tag 'Your Email (optional, unless you want us to get back to you)' %>
+    <%= error_msg @feedback, :email %>
+    <%= email_field_tag 'feedback[email]', @feedback.email || current_person.try(:email), class: 'form-control' %>
+  </div>
+  <div class="form-group <%= error_class @feedback, :subject %>">
+    <%= label_tag 'Subject' %>
+    <%= error_msg @feedback, :subject %>
+    <%= text_field_tag 'feedback[subject]', @feedback.subject, class: 'form-control' %>
+  </div>
+  <div class="form-group <%= error_class @feedback, :message %>">
+    <%= label_tag 'Message' %>
+    <%= error_msg @feedback, :message %>
+    <%= text_area_tag 'feedback[message]', @feedback.message, class: 'form-control' %>
+  </div>
+
+  <%= button_tag 'Send', type: :submit, class: 'btn btn-primary' %>
+<% end %>
