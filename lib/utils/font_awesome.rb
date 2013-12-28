@@ -446,6 +446,6 @@ module FontAwesome
  fa-stethoscope
  fa-user-md
  fa-wheelchair
-  ].reject { |i| i.include?('alias') }.sort.map { |i| i.gsub!('fa-', ''); [i.titleize, i] }
+  ].reject { |i| i.include?('alias') }.uniq.sort.map { |i| i.gsub!('fa-', ''); [i.titleize, i] }
 end
 
