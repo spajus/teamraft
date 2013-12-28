@@ -4,7 +4,7 @@
       <tr>
         <td class="large-person-pic"><%= image_tag photo_url(@person, size: 256), width: 256, class: 'img-person img-person-large img-circle' %></td>
         <td class="person-data">
-          <h1><%= @person.name %></h1>
+          <h1><%= link_to @person.name, @person %> <%= admin_tag(@person) %></h1>
           <%= render 'register/person_form', person: @person, company: @company %>
         </td>
       </tr>

@@ -1,7 +1,7 @@
 class PersonAttribute < ActiveRecord::Base
   belongs_to :person
   belongs_to :attribute_type
-  validates :value, presence: true, if: 'attribute_type.required?'
+  validates :value, presence: true, if: 'attribute_type.try(:required?)'
 
   def self.update(person, attr_type_id, value)
     type_attributes = person.person_attributes.where(attribute_type_id: attr_type_id)

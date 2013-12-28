@@ -9,7 +9,7 @@ class AttributeType < ActiveRecord::Base
   before_save :set_sort_order
 
   belongs_to :company
-  has_many :person_attributes
+  has_many :person_attributes, dependent: :destroy
 
   TYPES = %w[Date Checkbox Text Number Email Phone]
 

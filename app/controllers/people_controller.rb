@@ -22,7 +22,9 @@ class PeopleController < ApplicationController
     # Errors appear on list when we use same object
     person = @people.select { |p| p.id == params[:person_id].to_i }.first
     @bulk_update_person_id = person.id
-    person.update_attributes(params.require(:person).permit(:name, :email, :tag_list))
+    new_attributes = params.require(:person).permit(:name, :email, :tag_list, :admin)
+    new_attributes[:admin] ||= false unless person == current_person
+    person.update_attributes(new_attributes)
     person.update_person_attributes(params[:person_attributes])
     if person.valid?
       person.save
@@ -58,7 +60,13 @@ class PeopleController < ApplicationController
     unless (@person == current_person) || current_person.admin?
       return redirect_to company_path
     end
-    @person.update_attributes(params.require(:person).permit(:name, :email, :photo, :tag_list))
+    permit_attributes = [:name, :email, :photo, :tag_list]
+    permit_attributes << :admin if current_person.admin?
+    new_attributes = params.require(:person).permit(*permit_attributes)
+    if current_person != @person
+      new_attributes[:admin] ||= false if current_person.admin?
+    end
+    @person.update_attributes(new_attributes)
     @person.update_person_attributes(params[:person_attributes])
     if @person.valid?
       @person.save

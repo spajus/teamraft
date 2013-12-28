@@ -11,6 +11,23 @@ body {
   color: #5a5a5a;
 }
 
+.btn-mega {
+  padding: 20px 50px;
+  font-size: 45px;
+  line-height: 1.33;
+  border-radius: 12px;
+}
+
+.no-bg {
+  background-color: transparent;
+}
+
+.jumbotron-welcome {
+  h1 {
+    font-size: 92px;
+  }
+}
+
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 
@@ -69,6 +86,10 @@ body {
   font-weight: 300;
   line-height: 1;
   letter-spacing: -1px;
+}
+
+.featurette-last {
+  margin-bottom: 160px;
 }
 
 

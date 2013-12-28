@@ -2,11 +2,13 @@
 <%= form_tag "#{@form_path}#{page}", method: @form_method || :post do %>
   <%= hidden_field_tag(:page, params[:page]) if params[:page] %>
   <%= hidden_field_tag :person_id, person.id %>
-  <div class="form-group <%= error_class person, :name %>">
-    <%= label_tag 'Name' %>
-    <%= error_msg person, :name %>
-    <%= text_field_tag 'person[name]', person.name, class: 'form-control' %>
-  </div>
+  <% if current_person.admin? && person != current_person %>
+    <div class="form-group <%= error_class person, :admin %>">
+      <%= error_msg person, :admin %>
+      <%= check_box_tag 'person[admin]', true, person.admin?, id: "person_admin_#{person.id}"%>
+      <%= label_tag "person_admin_#{person.id}", 'Administrator' %>
+    </div>
+  <% end %>
   <div class="form-group <%= error_class person, :email %>">
     <%= label_tag 'Email' %>
     <%= error_msg person, :email %>

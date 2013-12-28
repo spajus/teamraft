@@ -7,7 +7,7 @@
         <%= link_to 'Delete', person, confirm: 'Are you sure?', method: 'delete', class: 'btn btn-primary' %>
       </div>
     <% end %>
-    <h1><%= person.name %></h1>
+    <h1><%= link_to person.name, person %> <%= admin_tag(person) %></h1>
     <table class="table table-striped">
       <tr>
         <td width="1%"><%= icon('tags', 'Tags') %></td>
