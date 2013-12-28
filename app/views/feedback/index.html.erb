@@ -14,7 +14,7 @@
   <div class="form-group <%= error_class @feedback, :message %>">
     <%= label_tag 'Message' %>
     <%= error_msg @feedback, :message %>
-    <%= text_area_tag 'feedback[message]', @feedback.message, class: 'form-control' %>
+    <%= text_area_tag 'feedback[message]', @feedback.message, class: 'form-control', rows: 5 %>
   </div>
 
   <%= button_tag 'Send', type: :submit, class: 'btn btn-primary' %>
