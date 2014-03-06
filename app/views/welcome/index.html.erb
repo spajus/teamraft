@@ -2,34 +2,80 @@
 
   <div class="jumbotron jumbotron-welcome text-center no-bg">
     <h1>TEAM<wbr>RAFT</h1>
-    <h2 class="text-muted">Find the people that you need when you need them</h2>
+    <h2 class="text-muted">Roll Your Own HR. (beta)</h2>
   </div>
 
+  <div class="row">
+    <div class="col-lg-4">
+      <%= image_tag 'face1.jpg', class: 'img-circle', width: 140, height: 140 %>
+      <h2>What's her name?</h2>
+      <p class="lead">Never forget new hire's name - it's easy to find a face in Teamraft.</p>
+    </div>
+    <div class="col-lg-4">
+      <%= image_tag 'face2.jpg', class: 'img-circle', width: 140, height: 140 %>
+      <h2>She works remotely</h2>
+      <p class="lead">Remote work is getting increasingly popular. There are no location barriers for using Teamraft.</p>
+    </div>
+    <div class="col-lg-4">
+      <%= image_tag 'face3.jpg', class: 'img-circle', width: 140, height: 140 %>
+      <h2>Is he our sales guy?</h2>
+      <p class="lead">Having trouble finding a guy in the right department? Stop wasting your time - find people quickly with Teamraft.</p>
+    </div><!-- /.col-lg-4 -->
+  </div><!-- /.row -->
+
+
+  <!-- START THE FEATURETTES -->
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">Simple. <span class="text-muted">Clean.</span></h2>
+      <p class="lead">Still using spreadsheets to keep track of your team data?<br/> Your team deserves something better.</p>
+    </div>
+    <div class="col-md-5">
+      <%= image_tag 'faces1.jpg', class: 'featurette-image img-responsive' %>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-5">
+      <%= image_tag 'faces4.png', class: 'featurette-image img-responsive' %>
+    </div>
+    <div class="col-md-7">
+      <h2 class="featurette-heading">Roll your own HR form</h2>
+      <p class="lead">Build and arrange personal form fields just the way you want it. <br/>Add extra spice to boring corporate details. Go crazy! <br/> Dozens of field templates available.</p>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">Find anything. <span class="text-muted">In seconds.</span></h2>
+      <p class="lead">Everything is searchable using a single search input. <br/>
+        Highlights help you find what you are looking for.</p>
+    </div>
+    <div class="col-md-5">
+      <%= image_tag 'faces3.png', class: 'featurette-image img-responsive' %>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
 
   <div class="row featurette featurette-last">
-    <div class="col-md-4"></div>
-    <div class="col-md-4 text-center">
-      <%= form_tag do %>
-        <div class="form-group text-center">
-          <%= email_field_tag 'contact_email', nil, placeholder: 'your@email.com', class: 'form-control' %>
-        </div>
-        <%= submit_tag 'I want in!', class: 'btn btn-success' %>
-      <% end %>
+    <div class="col-md-12 text-center">
+      <h2 class="featurette-heading">Free for 10 people</h2>
+      <p class="lead">Free for any team size for beta period.</p>
+      <%= link_to 'Add your team', company_register_path, class: 'btn btn-mega btn-success' %>
     </div>
-    <div class="col-md-4"></div>
   </div>
 
   <!-- /END THE FEATURETTES -->
 
+<%= render 'shared/footer' %>
+
 </div><!-- /.container -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-46745129-1', 'teamraft.com');
-  ga('send', 'pageview');
-
-</script>
 

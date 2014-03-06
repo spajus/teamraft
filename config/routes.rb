@@ -38,6 +38,4 @@ Teamraft::Application.routes.draw do
 
   post '/' => 'welcome#index'
 
-  get '/betatest' => 'welcome#index_beta'
-
 end

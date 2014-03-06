@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
 
   skip_before_filter :authenticate_person!
 
-  def index
+  def index_teaser
     return redirect_to company_path if person_signed_in?
     if request.post?
       email = params[:contact_email]
@@ -16,7 +16,7 @@ class WelcomeController < ApplicationController
     render layout: 'intro-pre'
   end
 
-  def index_beta
+  def index
     return redirect_to company_path if person_signed_in?
     render layout: 'intro'
   end
