@@ -1,5 +1,5 @@
 class PersonMailer < ActionMailer::Base
-  default from: "no-reply@dat-face.herokuapp.com"
+  default from: "no-reply@teamraft.com"
 
   def you_were_added(person, company, added_by, password)
     @person = person

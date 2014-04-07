@@ -11,10 +11,8 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: dat-face_development
+  database: teamraft_development
   pool: 5
-  username: root
-  password: a
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -22,15 +20,11 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  database: dat-face_test
+  database: teamraft_test
   pool: 5
-  username: root
-  password: a
 
 production:
   adapter: mysql2
   encoding: utf8
-  database: dat-face_production
+  database: teamraft_production
   pool: 5
-  username: root
-  password: a
